@@ -1,1 +1,42 @@
+#movie-bar {
+  height: 15vh;
+  background: rgb(49, 109, 179);
+  display: table;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1vh;
+  float: left;
+}
 
+#movie-bar span {
+    padding: 1%;
+    height: 80%;
+    width: 10vw;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    align-items: center;
+    border-radius: 50em;
+    border: 1px solid white;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 15px 50px;
+    margin-bottom: 10px;
+  }
+
+  #movie-info {
+    padding-left: 15%;
+  }
+
+  .titles {
+    font-size: 35px;
+  }
+
+  .moreInfo {
+    float: right;
+  }
+
+  p {
+    word-break: break-all;
+    white-space: normal;
+  }
