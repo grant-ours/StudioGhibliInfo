@@ -33,10 +33,21 @@
   }
 
   .moreInfo {
-    float: right;
+    /* grid-column-start: 3;
+    grid-column-end: span end; 
+    float: right; */
   }
+
 
   p {
     word-break: break-all;
     white-space: normal;
+    overflow-wrap: break-word;
   }
+
+  /* .container {
+    grid-template-columns: [first] 33% [line2] auto [line3] 33% [end];
+  }
+  */
+
+  
