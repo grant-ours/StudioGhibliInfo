@@ -6,5 +6,8 @@ fetch("https://ghibliapi.herokuapp.com/films/")
         const span = document.createElement('span');
         span.innerText = movie.title;
         movieBar.append(span);
+        span.addEventListener('click', (event) => {
+            
+        })
     })
 });
