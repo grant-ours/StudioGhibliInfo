@@ -33,12 +33,76 @@ fetch("https://ghibliapi.herokuapp.com/films/")
             releaseDate.innerText = `Release Date: ${movie.release_date}`;
             rtScore.innerText = `Rate Score: ${movie.rt_score}`;
             description.innerText = `Description: ${movie.description}`;
+            
+            
+            characterInfo = document.querySelector('.characterInfo');
+            
+            const charButton = document.querySelector('#char');
+            const noChar = document.querySelector('#noChar');
+            charButton.remove();
+            noChar.innerText = "";
 
-        
-       
-         })
+            const characters = document.querySelector('#characters');
+            characters.remove();
+            const newCharDiv = document.createElement('div');
+            newCharDiv.id = "characters";
+            characterInfo.append(newCharDiv);
+
+            button = document.createElement('button');
+            button.id = 'char';
+            button.innerText = 'Click Here To See More Characters';
+            characterInfo.append(button);
+            button.addEventListener('click', (event) => {
+             console.log(movie);
+             if (movie.people == 'https://ghibliapi.herokuapp.com/people/') {
+                noChar.innerText = 'Sorry, the character information for this movie is not available.';
+                noChar.style.background = 'red';
+            }
+             else {
+                movie.people.forEach(person => {
+                    console.log(person);
+                    fetch(person)
+                    .then(response => response.json())
+                    .then(people => {
+                        console.log(people);
+                        
+                        const charSpan = document.createElement('span');
+                        const name = document.createElement('p');
+                        const age = document.createElement('p');
+                        const gender = document.createElement('p');
+                        const eyeColor = document.createElement('p');
+                        const hairColor = document.createElement('p');
+
+                        name.className = 'info';
+                        age.className = 'info';
+                        gender.className = 'info';
+                        eyeColor.className = 'info';
+                        hairColor.className = 'info';
+
+                        name.innerText = `Name: ${people.name}  `;
+                        age.innerText = `Age: ${people.age}  `;
+                        gender.innerText = `Gender: ${people.gender}  `;
+                        eyeColor.innerText = `Eye Color: ${people.eye_color}  `;
+                        hairColor.innerText = `Hair Color: ${people.hair_color}  `;
+                        
+                        newCharDiv.append(charSpan);
+                        charSpan.append(name);
+                        charSpan.append(age);
+                        charSpan.append(gender);
+                        charSpan.append(eyeColor);
+                        charSpan.append(hairColor);
+                        
+                    })
+                })
+             }
+              
+            
+             })
+         }) 
+         
         })
-    });
+    })
+
 
     const darkButton = document.createElement('button');
     darkButton.id = 'dark';
@@ -95,32 +159,7 @@ fetch("https://ghibliapi.herokuapp.com/films/")
 
     
 
-        /*button = document.createElement('button');
-        characters = document.querySelector('.characters');
-         button.innerText = 'Click Here To See More Characters'
-         button.addEventListener('click', (event) => {
-             console.log(event.target);
-              movie.people.forEach(person => {
-                 console.log();
-                 fetch(person)
-                 .then(response => response.json())
-                 .then(person => {
-                     console.log(person);
-                     const charSpan = document.createElement('span');
-                     const name = document.createElement('p');
-                     const age = document.createElement('p');
-                     const gender = document.createElement('p');
-                     const eyeColor = document.createElement('p');
-                     const hairColor = document.createElement('p');
-                     name.innerText = person.name;
-                     charSpan.append(name);
-                 })
-            
-             })
-         }) 
-         
-        })
-        characters.append(button)
-        */
+        
+        
 
 
