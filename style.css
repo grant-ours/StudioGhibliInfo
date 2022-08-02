@@ -1,11 +1,13 @@
 #movie-bar {
   height: 15vh;
-  background: rgb(49, 109, 179);
+  background: #483D8B;
   display: table;
   justify-content: space-around;
   align-items: center;
   padding: 1vh;
   float: left;
+  color: white;
+
 }
 
 #movie-bar span {
@@ -43,6 +45,49 @@
     word-break: break-all;
     white-space: normal;
     overflow-wrap: break-word;
+  }
+
+  html {
+    background: #E6E6FA;
+  }
+
+  #buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  #dark {
+    border-radius: 50%;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 10px;
+    background: #454545;
+    color: white;
+  }
+
+  #nature {
+    border-radius: 50%;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 10px;
+    background: #90EE90;
+  }
+
+  #sky {
+    border-radius: 50%;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 10px;
+    background: #7CBDFF;
+  }
+
+  #reset {
+    border-radius: 50%;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 10px;
+    background: #E6E6FA;
   }
 
   /* .container {
