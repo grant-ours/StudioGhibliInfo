@@ -1,18 +1,19 @@
-let film = {};
 let characters;
 let button;
 const movieBar = document.querySelector('#movie-bar');
 
+//GET Request for all the Studio Ghibli Films
 fetch("https://ghibliapi.herokuapp.com/films/")
 .then(response => response.json())
 .then(movies => {
+    //Going through the data called movies and for each movie, we are doing this:
     movies.forEach(
        movie => {
         const span = document.createElement('span');
         span.innerText = movie.title;
         movieBar.append(span);
         span.addEventListener('click', (event) => {
-            film = event.target.innerText
+            //When we click on each movie, it is displaying movie information
             const title = document.querySelector('#title');
             const ogTitle = document.querySelector('#ogTitle');
             const image = document.querySelector('#image');
@@ -20,7 +21,6 @@ fetch("https://ghibliapi.herokuapp.com/films/")
             const releaseDate = document.querySelector('#releaseDate');
             const rtScore = document.querySelector('#rtScore');
             const description = document.querySelector('#description');
-            //const moreInfo = document.querySelector('.moreInfo');
             
 
             title.innerText = movie.title;
@@ -37,11 +37,13 @@ fetch("https://ghibliapi.herokuapp.com/films/")
             
             characterInfo = document.querySelector('.characterInfo');
             
+            //Removing Old Button To Avoid Duplicates 
             const charButton = document.querySelector('#char');
             const noChar = document.querySelector('#noChar');
             charButton.remove();
             noChar.innerText = "";
 
+            //Removing Old Characters To Make Room For New Characters When Clicking Each Movie
             const characters = document.querySelector('#characters');
             characters.remove();
             const newCharDiv = document.createElement('div');
@@ -52,19 +54,22 @@ fetch("https://ghibliapi.herokuapp.com/films/")
             button.id = 'char';
             button.innerText = 'Click Here To See More Characters';
             characterInfo.append(button);
+            //When we click the characters button, it will display specific movie characters 
             button.addEventListener('click', (event) => {
-             console.log(movie);
+             //console.log(movie);
+             //If Statement will say there are no specific characters
              if (movie.people == 'https://ghibliapi.herokuapp.com/people/') {
                 noChar.innerText = 'Sorry, the character information for this movie is not available.';
                 noChar.style.background = 'red';
             }
+            //If there are characters, then it will display them for each movie
              else {
                 movie.people.forEach(person => {
-                    console.log(person);
+                    //console.log(person);
                     fetch(person)
                     .then(response => response.json())
                     .then(people => {
-                        console.log(people);
+                        //console.log(people);
                         
                         const charSpan = document.createElement('span');
                         const name = document.createElement('p');
@@ -103,7 +108,7 @@ fetch("https://ghibliapi.herokuapp.com/films/")
         })
     })
 
-
+//Creating different mode buttons 
     const darkButton = document.createElement('button');
     darkButton.id = 'dark';
     const buttonDiv = document.querySelector('#buttons');
@@ -127,7 +132,7 @@ fetch("https://ghibliapi.herokuapp.com/films/")
 
     const html = document.querySelector('html');
     
-
+//Event Listeners for Different Mode Buttons
     skyButton.addEventListener('click', (e) => {
         html.style.background = '#7CBDFF';
         html.style.color = 'white';
