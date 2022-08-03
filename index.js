@@ -39,7 +39,9 @@ fetch("https://ghibliapi.herokuapp.com/films/")
         const bannerDiv = document.querySelector("#banner");
         const oldBannerImg = document.querySelector("#bannerImg");
         const oldBannerBtn = document.querySelector("#bannerBtn");
-        oldBannerImg.remove();
+        if (oldBannerImg) {
+          oldBannerImg.remove();
+        }
         if (oldBannerBtn) {
           oldBannerBtn.remove();
         }
@@ -65,7 +67,7 @@ fetch("https://ghibliapi.herokuapp.com/films/")
         rtScore.innerText = `Rate Score: ${movie.rt_score}`;
         description.innerText = `Description: ${movie.description}`;
 
-        characterInfo = document.querySelector(".characterInfo");
+        const characterInfo = document.querySelector(".characterInfo");
 
         //Removing Old Button To Avoid Duplicates
         const charButton = document.querySelector("#char");
