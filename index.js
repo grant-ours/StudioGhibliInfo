@@ -40,7 +40,9 @@ fetch("https://ghibliapi.herokuapp.com/films/")
         const oldBannerImg = document.querySelector("#bannerImg");
         const oldBannerBtn = document.querySelector("#bannerBtn");
         oldBannerImg.remove();
-        oldBannerBtn.remove();
+        if (oldBannerBtn) {
+          oldBannerBtn.remove();
+        }
         const bannerBtn = document.createElement("button");
         bannerDiv.append(bannerBtn);
         bannerBtn.id = "bannerBtn";
