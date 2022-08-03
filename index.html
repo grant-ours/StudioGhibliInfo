@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Studio Ghibli</title>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script defer src="index.js"></script>
   </head>
   <body>
@@ -10,31 +10,45 @@
       <div id="movie-bar"></div>
 
       <div id="movie-info">
-        <p class= "titles" id="title">Castle in the Sky</p>
-        <p class="titles" id="ogTitle">天空の城ラピュタ</p>
-        <img 
+        <p class="titles" id="title">Castle in the Sky</p>
+        <em id="help">
+          Hover your mouse over the title to see the original Japanese title
+        </em>
+        <img
           id="image"
           src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/npOnzAbLh6VOIu3naU5QaEcTepo.jpg"
           alt="Castle in the Sky"
         />
-        <div class= "moreInfo">
-          <p id="directorAndProducer">Director: Hayao Miyazaki  |  Producer: Isao Takahata</p>
+        <div id="banner">
+          <img id="bannerImg" />
+          <button id="bannerBtn" class="clickHere">
+            Click Here To See The Movie Banner!
+          </button>
+        </div>
+        <div class="moreInfo">
+          <p id="directorAndProducer">
+            Director: Hayao Miyazaki | Producer: Isao Takahata
+          </p>
           <p id="releaseDate">Release Date: 1986</p>
           <p id="rtScore">Rating Score: 95</p>
-          <p id="description">Description: The orphan Sheeta inherited a mysterious crystal that links her to the mythical sky-kingdom of Laputa. With the help of resourceful Pazu and a rollicking band of sky pirates, she makes her way to the ruins of the once-great civilization. Sheeta and Pazu must outwit the evil Muska, who plans to use Laputa's science to make himself ruler of the world.</p>
+          <p id="description">
+            Description: The orphan Sheeta inherited a mysterious crystal that
+            links her to the mythical sky-kingdom of Laputa. With the help of
+            resourceful Pazu and a rollicking band of sky pirates, she makes her
+            way to the ruins of the once-great civilization. Sheeta and Pazu
+            must outwit the evil Muska, who plans to use Laputa's science to
+            make himself ruler of the world.
+          </p>
           <div class="characterInfo">
-            <button id="char">Click Here To See More Characters</button>
-            <span id="noChar">
-
-            </span>
-            <div id="characters">
-              
-            </div>
+            <button id="char" class="clickHere">
+              Click Here To See More Characters
+            </button>
+            <span id="noChar"> </span>
+            <div id="characters"></div>
           </div>
         </div>
       </div>
     </div>
-    <div id="buttons">
-    </div>
+    <div id="buttons"></div>
   </body>
 </html>

@@ -1,6 +1,8 @@
 let characters;
 let button;
 const movieBar = document.querySelector("#movie-bar");
+const title = document.querySelector("#title");
+const ogTitle = document.querySelector("#ogTitle");
 
 //GET Request for all the Studio Ghibli Films
 fetch("https://ghibliapi.herokuapp.com/films/")
@@ -13,8 +15,6 @@ fetch("https://ghibliapi.herokuapp.com/films/")
       movieBar.append(span);
       span.addEventListener("click", (event) => {
         //When we click on each movie, it is displaying movie information
-        const title = document.querySelector("#title");
-        const ogTitle = document.querySelector("#ogTitle");
         const image = document.querySelector("#image");
         const directorAndProducer = document.querySelector(
           "#directorAndProducer"
@@ -23,11 +23,40 @@ fetch("https://ghibliapi.herokuapp.com/films/")
         const rtScore = document.querySelector("#rtScore");
         const description = document.querySelector("#description");
 
+        //event listener for title change
         title.innerText = movie.title;
-        ogTitle.innerText = movie.original_title;
+        title.addEventListener("mouseover", (e) => {
+          title.innerText = movie.original_title;
+        });
+        title.addEventListener("mouseout", (e) => {
+          title.innerText = movie.title;
+        });
 
         image.src = movie.image;
         image.alt = movie.title;
+
+        //handles banner img and banner img button
+        const bannerDiv = document.querySelector("#banner");
+        const oldBannerImg = document.querySelector("#bannerImg");
+        const oldBannerBtn = document.querySelector("#bannerBtn");
+        oldBannerImg.remove();
+        oldBannerBtn.remove();
+        const bannerBtn = document.createElement("button");
+        bannerDiv.append(bannerBtn);
+        bannerBtn.id = "bannerBtn";
+        bannerBtn.className = "clickHere";
+        // bannerBtn.style.marginLeft = "13%";
+        bannerBtn.innerText = "Click Here To See The Movie Banner!";
+        bannerBtn.addEventListener("click", (e) => {
+          const bannerImg = document.createElement("img");
+          bannerDiv.append(bannerImg);
+          bannerImg.id = "bannerImg";
+          bannerImg.src = movie.movie_banner;
+          bannerImg.style.width = "700px";
+          bannerImg.style.height = "400px";
+          bannerImg.style.objectFit = "cover";
+          bannerBtn.remove();
+        });
 
         directorAndProducer.innerText = `Director: ${movie.director}  |  Producer: ${movie.producer}`;
         releaseDate.innerText = `Release Date: ${movie.release_date}`;
@@ -51,6 +80,7 @@ fetch("https://ghibliapi.herokuapp.com/films/")
 
         button = document.createElement("button");
         button.id = "char";
+        button.className = "clickHere";
         button.innerText = "Click Here To See More Characters";
         characterInfo.append(button);
         //When we click the characters button, it will display specific movie characters
@@ -156,5 +186,3 @@ resetButton.addEventListener("click", (e) => {
   movieBar.style.background = "#483D8B";
   movieBar.style.color = "white";
 });
-
-//hello pls
